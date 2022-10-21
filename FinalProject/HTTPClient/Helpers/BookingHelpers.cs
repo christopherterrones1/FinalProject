@@ -29,20 +29,6 @@ namespace HTTPClient.Helpers
             return await _httpClient.PostAsync(Endpoints.GetURL(Endpoints.UserEndpoint), postRequest);
         }
 
-        public async Task<List<BookingJSONModel>> GetAllBookings()
-        {
-            _httpClient = new HttpClient();
-            _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-
-            var httpResponse = await _httpClient.GetAsync(Endpoints.GetUri(Endpoints.UserEndpoint));
-
-            var getResponse = JsonConvert.DeserializeObject< List<BookingJSONModel>>(httpResponse.Content.ReadAsStringAsync().Result);
-
-
-
-            return getResponse;
-        }
-
         public async Task<HttpResponseMessage> GetBookingById(int bookingId)
         {
             _httpClient = new HttpClient();
